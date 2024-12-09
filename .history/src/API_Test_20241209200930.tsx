@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { observer } from 'mobx-react-lite';
-import { ConfigProvider, theme, Input } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 import { Store } from './globalStore';
-
-const { TextArea } = Input;
 
 interface User {
     id: number;
@@ -12,21 +10,18 @@ interface User {
 }
 
 const API_Test = observer(() => {
-    const {Dark_themeState } = Store;
+    const { Dark_themeState } = Store;
     const [users, setUsers] = useState<User[]>([]);
-    const [message, setMessage] = useState<string>('');
-
-    const fetchUsers = () => {
+    
+    useEffect(() => {
         axios.get('http://localhost:3000/users')
             .then(response => {
                 setUsers(response.data);
-                setMessage('用户数据获取成功！');
             })
             .catch(error => {
                 console.error('Error fetching users:', error);
-                setMessage('获取用户数据失败！');
             });
-    };
+    }, []);
 
     return (
         <ConfigProvider
@@ -41,23 +36,11 @@ const API_Test = observer(() => {
         <div className="app-container">
             <div>
                 <h1>User List</h1>
-                <button onClick={fetchUsers}>获取用户</button>
-                <p>{message}</p>
                 <ul>
                     {users.map((user: User) => (
                         <li key={user.id}>{user.name}</li>
                     ))}
                 </ul>
-                
-                <TextArea
-                    id="story"
-                    name="story"
-                    rows={5}
-                    cols={33}
-                    value={users.length > 0 ? JSON.stringify(users, null, 2) : ''} // 将用户数据转换为字符串
-                    readOnly // 设置为只读
-                ></TextArea>
-
             </div>
         </div>
         </ConfigProvider>
