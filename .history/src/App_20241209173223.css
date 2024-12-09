@@ -1,0 +1,113 @@
+/* ================ 
+   基础样式
+   ================ */
+/* 根容器样式 - 设置基础布局尺寸 */
+#root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================ 
+   布局容器
+   ================ */
+/* 主应用容器 - Flex布局实现居中 */
+.app-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;    /* 添加横向居中 */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* background-color: plum; */
+}
+
+/* 头部导航样式 */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  width: 100%;
+  /* background-color: brown; */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header-left {
+  flex: 1;
+  height: 100;
+  background-color: blue !important;
+}
+
+.header-center {
+  flex: 1;
+  background-color: yellow !important;
+}
+
+.header-right {
+  flex: 1;
+  background-color: green !important;
+}
+
+/* ================ 
+   组件样式
+   ================ */
+/* Logo相关样式 */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;  /* 优化动画性能 */
+  transition: filter 300ms;  /* 过渡动画效果 */
+}
+
+/* Logo悬停效果 */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);  /* 紫色阴影效果 */
+}
+
+/* react logo 悬停效果 */
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);  /* React标志特殊的蓝色阴影 */
+}
+
+/* 卡片容器样式 */
+.card {
+  padding: 2em;
+}
+
+/* 文档链接样式 */
+.read-the-docs {
+  color: #888;  /* 浅灰色文本 */
+}
+
+/* 深色主题切换按钮动画 */
+.dark_theme_toggle_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 1s;  /* 平滑过渡效果 */
+}
+
+/* ================ 
+   动画效果
+   ================ */
+/* Logo旋转动画定义 */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 仅在用户未设置减少动画时显示旋转动画 */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}

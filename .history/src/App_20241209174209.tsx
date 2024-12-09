@@ -5,7 +5,26 @@ import { Button, Divider, Modal } from 'antd'
 import { Store } from './globalStore';
 import { observer } from 'mobx-react-lite';
 import { MoonOutlined, MoonFilled, UploadOutlined, CameraOutlined, CopyOutlined, CloseOutlined } from '@ant-design/icons';
-import './styles/App.css'
+import './App.css'
+
+const API_Test = observer(() => {
+
+  return (
+    <ConfigProvider theme={{
+      token: {
+        colorBgContainer: '#2a2a2a',
+        colorText: '#fff',
+      }
+    }}>
+      <div className="app-container">
+
+      </div>
+    </ConfigProvider>
+  );
+});
+
+
+
 
 const App = observer(() => {
   const { Dark_themeState } = Store;
@@ -48,3 +67,4 @@ const App = observer(() => {
 });
 
 export default App;
+export {API_Test}

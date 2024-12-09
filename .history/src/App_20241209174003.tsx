@@ -5,7 +5,29 @@ import { Button, Divider, Modal } from 'antd'
 import { Store } from './globalStore';
 import { observer } from 'mobx-react-lite';
 import { MoonOutlined, MoonFilled, UploadOutlined, CameraOutlined, CopyOutlined, CloseOutlined } from '@ant-design/icons';
-import './styles/App.css'
+import './App.css'
+
+const API_test = observer(() => {
+  // 使用 useState 管理图片URL状态
+  // null 表示没有图片，string 类型表示图片的 URL
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  return (
+    <ConfigProvider theme={{
+      token: {
+        colorBgContainer: '#2a2a2a',
+        colorText: '#fff',
+      }
+    }}>
+      <div className="app-container">
+      
+      </div>
+    </ConfigProvider>
+  );
+});
+
+
+
 
 const App = observer(() => {
   const { Dark_themeState } = Store;
@@ -48,3 +70,4 @@ const App = observer(() => {
 });
 
 export default App;
+export {API_test}
